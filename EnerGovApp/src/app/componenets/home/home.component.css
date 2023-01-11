@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    min-height:220px;
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box div {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container {
+    margin-top: 30px;
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+
+  button {
+    width: 140%;
+  }

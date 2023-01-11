@@ -1,0 +1,13 @@
+
+<div class="box">
+
+      <mat-form-field appearance="fill" [color]="colorControl.value!">
+        <mat-label>Manager</mat-label>
+        <mat-select [formControl]="colorControl">
+          <mat-option *ngFor="let manager of managers" [value]="manager.employeeId">
+            {{manager.firstName}} {{manager.lastName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  </div>

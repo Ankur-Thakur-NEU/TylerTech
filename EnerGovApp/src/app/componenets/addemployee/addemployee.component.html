@@ -1,0 +1,77 @@
+<div>
+
+  <div fxLayout="row">
+    <div fxFlexOffset="42" fxFlex="70">
+      <h1>Add New Employee</h1>
+    </div>
+  </div>
+  <form class="form" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <app-manager formControlName="managerId" (managerId)="getManagerId($event)"></app-manager>
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <mat-error
+          *ngIf="(employeeFormControl['managerId'].touched || submitted) && employeeFormControl['managerId'].errors?.['required']">
+          Manager is required
+        </mat-error>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <mat-form-field appearance="fill">
+          <mat-label>Employee ID</mat-label>
+          <input type="number" matInput placeholder="" formControlName="employeeId" required>
+          <mat-error
+            *ngIf="(employeeFormControl['employeeId'].touched || submitted) && 
+              (employeeFormControl['employeeId'].errors?.['required'] || employeeFormControl['employeeId'].errors?.['pattern'])">
+            Employee ID is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="" formControlName="firstName" required>
+          <mat-error
+            *ngIf="(employeeFormControl['firstName'].touched || submitted) && employeeFormControl['firstName'].errors?.['required']">
+            First Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="" formControlName="lastName" required>
+          <mat-error
+            *ngIf="(employeeFormControl['lastName'].touched || submitted) && employeeFormControl['lastName'].errors?.['required']">
+            Last Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <mat-form-field appearance="fill">
+          <mat-label>Roles</mat-label>
+          <mat-select id="roles" formControlName="roles" multiple>
+            <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="(employeeFormControl['roles'].touched || submitted) && employeeFormControl['roles'].errors?.['required']">
+            Roles are required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlexOffset="43.3" fxFlex="70">
+        <button type="submit" mat-raised-button>Save</button>
+        <button (click)="onCancel()" color="accent" mat-raised-button>Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
